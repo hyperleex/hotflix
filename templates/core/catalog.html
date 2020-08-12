@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+    <main role="main">
+        <div class="content ">
+            <div class="catalogue overflow">
+                <div class="catalogue__header">
+                    <div class="breadcrumbs">
+                        <div class="breadcrumbs__item"><a class="breadcrumbs__href"
+                                                          href="/">Главная</a>&nbsp;/&nbsp;
+                        </div>
+                        <div class="breadcrumbs__item">Сериалы</div>
+                    </div>
+                    <h1>Сериалы онлайн</h1>
+
+
+                </div>
+                <div>
+                    <div class="catalogue__wrapper">
+
+                        {% for serial in serials %}
+
+                            <a class="card-item card-item-series"
+                               href="#">
+                                <div class="card-item__image">
+                                    <picture class="card-item__image-img" data-lazy-loaded="">
+                                        <img alt="{{ serial.name }}"
+                                             src="{{ serial.poster.url }}">
+                                    </picture>
+                                </div>
+                                <div class="card-item__title">{{ serial.name }}
+                                </div>
+                            </a>
+
+                        {% endfor %}
+                    </div>
+                    <button as="button" class="btn btn_primary">Загрузить еще</button>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

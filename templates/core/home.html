@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% load static %}
+    <main role="main">
+
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                {% for serial in serials %}
+                    <li data-target="#myCarousel" data-slide-to="{{ forloop.count }}"
+                        class="{% if forloop.first %} active {% endif %}"></li>
+                {% endfor %}
+            </ol>
+            <div class="carousel-inner">
+                {% for serial in serials %}
+                    <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                        <img src="{{ serial.poster.url }}" alt="">
+
+                        <div class="container">
+                            <div class="carousel-caption text-left">
+                                <h1>{{ serial.name }}</h1>
+                                <p>{{ serial.short_description }}</p>
+                                <p><a class="btn btn-lg btn-primary" href="#"
+                                      role="button">Смотреть</a></p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+            <a class="carousel-control-prev" href="#myCarousel" role="button"
+               data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#myCarousel" role="button"
+               data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <div class="showcase">
+            <div class="showcase-item">
+                <div class="video-line" type="continue-watching">
+                    <div class="component-header">
+                        <div class="component-header__title">Продолжить просмотр</div>
+                    </div>
+                    <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
+                        <div class="swiper-wrapper"
+                             style="width: 2380px; transform: translate3d(0px, 0px, 0px);">
+                            <div class="swiper-slide video-line__item swiper-slide-active"
+                                 style="width: 376.667px; margin-right: 20px;"><a
+                                    class="card-item card-item-continue-watching">
+                                <div class="card-item__image">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         viewBox="0 0 48 48" width="48" height="48"
+                                         class="card-item__play card-item__always">
+                                        <circle fill-opacity=".2" fill="#111113" cx="24"
+                                                cy="24" r="22"></circle>
+                                        <circle stroke="white" fill="transparent"
+                                                stroke-width="2.1"
+                                                stroke-dasharray="138.23007675795088 138.23007675795088"
+                                                r="22" cx="24" cy="24"
+                                                style="stroke-dashoffset: 138.23; transition: stroke-dashoffset 0.35s ease 0s; transform: rotate(-90deg); transform-origin: 50% 50%;"></circle>
+                                        <path d="M24 46c12.15 0 22-9.85 22-22S36.15 2 24 2 2 11.85 2 24s9.85 22 22 22zm0 2C10.745 48 0 37.255 0 24S10.745 0 24 0s24 10.745 24 24-10.745 24-24 24z"
+                                              fill-opacity=".2" fill="#FFF"></path>
+                                        <path d="M33.45 24.866l-13.952 8.022A1 1 0 0 1 18 32.021V15.98a1 1 0 0 1 1.498-.867l13.952 8.02a1 1 0 0 1 0 1.734z"
+                                              fill="#FEB52B"></path>
+                                    </svg>
+                                    <picture class="card-item__image-img"
+                                             data-lazy-loaded="">
+                                        <source media="(max-width: 768px)"
+                                                srcset="https://api.amediateka.tech/streamer/thumb/16319/thumb-0.jpg, https://api.amediateka.tech/streamer/thumb/16319/thumb-0.jpg 2x">
+                                        <source media="(min-width: 769px)"
+                                                srcset="https://api.amediateka.tech/streamer/thumb/16319/thumb-0.jpg, https://api.amediateka.tech/streamer/thumb/16319/thumb-0.jpg 2x">
+                                        <img src="https://api.amediateka.tech/streamer/thumb/16319/thumb-0.jpg">
+                                    </picture>
+                                    <div class="card-item__current">
+                                        <div class="card-item__current-duration">55:48</div>
+                                    </div>
+                                </div>
+                                <div class="card-item__title">Миллиарды</div>
+                                <div class="card-item__title-subtitle">4 сезон, 5 серия
+                                </div>
+                            </a></div>
+                        </div>
+                        <div class="swiper-button-next swiper-button-disabled" tabindex="0"
+                             role="button" aria-label="Next slide" aria-disabled="true">
+                            <div class="swiper-button-next-arrow"></div>
+                        </div>
+                        <div class="swiper-button-prev swiper-button-disabled" tabindex="0"
+                             role="button" aria-label="Previous slide" aria-disabled="true">
+                            <div class="swiper-button-prev-arrow"></div>
+                        </div>
+                        <span class="swiper-notification" aria-live="assertive"
+                              aria-atomic="true"></span></div>
+                </div>
+            </div>
+
+
+            {% for item in showcases %}
+                <div class="showcase-item">
+                    <div class="video-line" type="nw">
+                        <div class="component-header">
+                            <div class="component-header__title">{{ item.name }}</div>
+                        </div>
+                        <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
+                            <div class="swiper-wrapper"
+                                 style="width: 7933.33px; transform: translate3d(0px, 0px, 0px);">
+
+                                {% for serial in item.serial.all %}
+                                    <div class="swiper-slide video-line__item {% if forloop.first %}swiper-slide-next{% endif %}"
+                                         style="width: 376.667px; margin-right: 20px;"><a
+                                            class="card-item card-item-nw"
+                                            href="/watch/series_11308_milliardyi">
+                                        <div class="card-item__image"><img
+                                                src="{% static 'images/play.svg' %}"
+                                                class="card-item__play">
+                                            <picture class="card-item__image-img"
+                                                     data-lazy-loaded="">
+                                                <img alt="Миллиарды"
+                                                     src="{{ serial.poster.url }}">
+                                            </picture>
+                                        </div>
+                                        <div class="card-item__title">{{ serial.name }}</div>
+                                    </a></div>
+                                {% endfor %}
+
+                            </div>
+                            <div class="swiper-button-next" tabindex="0" role="button"
+                                 aria-label="Next slide" aria-disabled="false">
+                                <div class="swiper-button-next-arrow"></div>
+                            </div>
+                            <div class="swiper-button-prev swiper-button-disabled" tabindex="0"
+                                 role="button" aria-label="Previous slide" aria-disabled="true">
+                                <div class="swiper-button-prev-arrow"></div>
+                            </div>
+                            <span class="swiper-notification" aria-live="assertive"
+                                  aria-atomic="true"></span></div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </main>
+{% endblock %}
