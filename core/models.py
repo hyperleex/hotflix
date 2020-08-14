@@ -40,7 +40,7 @@ class Series(models.Model):
         return self.name
 
 
-class ShowCase(models.Model):
+class ShowCases(models.Model):
     name = models.CharField(max_length=255)
     serial = models.ManyToManyField(Serial, related_name='showcase')
 

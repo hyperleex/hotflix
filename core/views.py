@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from core.models import Serial, ShowCase
+from core.models import Serial, ShowCases
 
 
 def home_view(request):
@@ -7,7 +7,7 @@ def home_view(request):
 
     context = {
         'serials': serials,
-        'showcases': ShowCase.objects.all().prefetch_related('serial')
+        'showcases': ShowCases.objects.all().prefetch_related('serial')
     }
 
     return render(request, 'core/home.html', context)
