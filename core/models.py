@@ -38,3 +38,11 @@ class Series(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class ShowCases(models.Model):
+    name = models.CharField(max_length=255)
+    serial = models.ManyToManyField(Serial, related_name='showcase')
+
+    def __str__(self):
+        return self.name
