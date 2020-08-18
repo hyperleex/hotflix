@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from core.models import Serial, Genre, Series
+from core.models import Serial, Genre, Series, ShowCase
 
 
 @admin.register(Serial)
@@ -11,3 +11,4 @@ class SerialAdmin(admin.ModelAdmin):
 
 admin.site.register(Genre)
 admin.site.register(Series)
+admin.site.register(ShowCase)
