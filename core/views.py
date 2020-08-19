@@ -1,25 +1,15 @@
 from django.shortcuts import render
 
-from core.models import Serial
-
-class ShowCase:
-    def __init__(self, name, serials):
-        self.serials = serials
-        self.name = name
+from core.models import Serial, ShowCase
 
 
 def home_view(request):
     serials = Serial.objects.filter(is_featured=True)
-    popular_serials = Serial.objects.exclude(is_featured=True)
-    mir_sporta =  Serial.objects.filter(genres__name='Спорт')
-    ctx = { 
+    context = {
         'serials': serials,
-        'showcases': [
-            ShowCase('Сейчас смотрят', popular_serials),
-            ShowCase('Мир спорта', mir_sporta),
-        ]
-        }
-    return render(request, 'core\home.html', context=ctx)
+        'showcases': ShowCase.objects.all().prefetch_related('serials')
+    }
+    return render(request, 'core/home.html', context)
 
 def catalog_view(request):
     serials = Serial.objects.all()

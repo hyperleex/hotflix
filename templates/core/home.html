@@ -96,8 +96,7 @@
                     </div>
                     <div class="swiper-container swiper-container-initialized swiper-container-horizontal">
                         <div class="swiper-wrapper" style="width: 7933.33px; transform: translate3d(0px, 0px, 0px);">
-                    {# swiper-slide-active swiper-slide-next#}
-                            {% for serial in item.serials %}    
+                            {% for serial in item.serials.all %}    
                                 <div class="swiper-slide video-line__item" {% if forloop.first %} swiper-slide-active {% endif %} style="width: 376.667px; margin-right: 20px;"><a
                                         class="card-item card-item-nw" href="/watch/series_11308_milliardyi">
                                         <div class="card-item__image"><img src="{% static "images/play.svg" %}"
